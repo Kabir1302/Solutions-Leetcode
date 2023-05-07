@@ -22,9 +22,9 @@ class Solution
 {
     public:
     //Function to get the maximum total value in the knapsack.
-    bool static cmp(pair<double,Item>a , pair<double,Item>b)
+    bool static cmp(pair<double,Item>a,pair<double,Item>b)
     {
-        return a.first > b.first;
+        return a.first>b.first;
     }
     double fractionalKnapsack(int W, Item arr[], int n)
     {
@@ -32,12 +32,11 @@ class Solution
         vector<pair<double,Item>>v;
         for(int i=0;i<n;i++)
         {
-            double fractionValue=(1.0*arr[i].value)/arr[i].weight;
-            pair<double,Item>p=make_pair(fractionValue,arr[i]);
+            double val=(1.0*arr[i].value)/arr[i].weight;
+            pair<double,Item>p=make_pair(val,arr[i]);
             v.push_back(p);
         }
         sort(v.begin(),v.end(),cmp);
-        
         double totalVal=0;
         for(int i=0;i<n;i++)
         {
@@ -49,13 +48,53 @@ class Solution
             else
             {
                 totalVal+=v[i].second.value;
-                W=W-v[i].second.weight;
+                W-=v[i].second.weight;
             }
         }
         return totalVal;
     }
         
 };
+
+
+// class Solution
+// {
+//     public:
+//     //Function to get the maximum total value in the knapsack.
+//      bool static cmp(pair<double,Item>a, pair<double,Item>b)
+//      {
+//          return a.first > b.first;
+//      }
+     
+//     double fractionalKnapsack(int W, Item arr[], int n)
+//     {
+//         // Your code here
+//         vector<pair<double,Item>>v;
+//         for(int i=0;i<n;i++)
+//         {
+//             double fractionVal=(1.0*arr[i].value)/arr[i].weight;
+//             pair<double,Item>p=make_pair(fractionVal,arr[i]);
+//             v.push_back(p);
+//         }
+//         sort(v.begin(),v.end(),cmp);
+//         double totalVal=0;
+//         for(int i=0;i<n;i++)
+//         {
+//             if(v[i].second.weight > W)
+//             {
+//                 totalVal+=W*v[i].first;
+//                 W=0;
+//             }
+//             else
+//             {
+//                 totalVal+=v[i].second.value;
+//                 W=W-v[i].second.weight;
+//             }
+//         }
+//         return totalVal;
+//     }
+        
+// };
 
 
 //{ Driver Code Starts.
