@@ -11,20 +11,18 @@ class Solution{
 public:
     int getPairsCount(int arr[], int n, int k) {
         // code here
-        unordered_map<int,int>freq;
+        map<int,int>m1;
         int cnt=0;
         for(int i=0;i<n;i++)
         {
             int temp=k-arr[i];
-            if(freq.count(temp))
+            if(m1.count(temp))
             {
-                cnt+=freq[temp];
+                cnt+=m1[temp];
             }
-            freq[arr[i]]++;
+            m1[arr[i]]++;
         }
         return cnt;
-        
-        //in this soln we basically take freq of eACH ELEMENT OF array and further we check k-arr[i] if it is in freq map we add its freq in cnt;
     }
 };
 
